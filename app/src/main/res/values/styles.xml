@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="textBold">
+        <item name="android:textSize">@dimen/textSize</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="textItalic" parent="textBold">
+        <item name="android:textSize">@dimen/textSize</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+</resources>
