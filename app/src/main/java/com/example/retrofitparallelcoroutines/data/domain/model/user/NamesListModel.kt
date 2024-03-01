@@ -5,5 +5,5 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class NamesListModel(
-    val users: MutableList<NameModel> = mutableListOf()
+    val names: MutableList<NameModel> = mutableListOf()
 ) : BaseModel()
