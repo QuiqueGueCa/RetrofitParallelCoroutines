@@ -5,12 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofitparallelcoroutines.R
-import com.example.retrofitparallelcoroutines.data.domain.model.user.UserModel
+import com.example.retrofitparallelcoroutines.data.domain.model.user.NameModel
 import com.example.retrofitparallelcoroutines.databinding.ItemRecyclerUserBinding
 
 class UsersAdapter(
     private val listener: UserListener,
-    private val users: MutableList<UserModel> = mutableListOf()
+    private val users: MutableList<NameModel> = mutableListOf()
 ) : RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
 
     interface UserListener {
@@ -43,4 +43,11 @@ class UsersAdapter(
     }
 
     override fun getItemCount(): Int = users.count()
+
+
+    fun refreshData(namesList: MutableList<NameModel>) {
+        users.clear()
+        users.addAll(namesList)
+        notifyDataSetChanged()
+    }
 }
