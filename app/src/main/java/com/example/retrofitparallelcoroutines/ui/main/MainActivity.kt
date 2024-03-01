@@ -1,4 +1,4 @@
-package com.example.retrofitparallelcoroutines.main
+package com.example.retrofitparallelcoroutines.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

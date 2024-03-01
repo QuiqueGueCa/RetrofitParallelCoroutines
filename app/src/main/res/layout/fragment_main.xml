@@ -10,7 +10,15 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/recyclerHeight"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_recycler_user" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginHorizontal="@dimen/largeMargin"
+        app:layout_constraintTop_toBottomOf="@id/recyclerView" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -51,14 +59,6 @@
         app:layout_constraintEnd_toEndOf="@id/tvId"
         app:layout_constraintTop_toBottomOf="@id/tvName" />
 
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/commonMargin"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="tvSurname, tvSurnameContain" />
-
     <TextView
         android:id="@+id/tvCompany"
         style="@style/textBold"
@@ -68,7 +68,7 @@
         android:text="@string/company"
         app:layout_constraintStart_toStartOf="@id/tvId"
         app:layout_constraintEnd_toEndOf="@id/tvId"
-        app:layout_constraintTop_toBottomOf="@id/barrier" />
+        app:layout_constraintTop_toBottomOf="@id/tvSurnameContain" />
 
     <TextView
         android:id="@+id/tvSalary"
