@@ -5,4 +5,5 @@
     <string name="surname">Apellidos:</string>
     <string name="company">Compañía:</string>
     <string name="salary">Salario:</string>
+    <string name="total">Total:</string>
 </resources>

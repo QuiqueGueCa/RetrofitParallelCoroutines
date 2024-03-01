@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
@@ -70,6 +69,7 @@
         app:layout_constraintStart_toStartOf="@id/tvId"
         app:layout_constraintTop_toBottomOf="@id/tvSurnameContain" />
 
+
     <TextView
         android:id="@+id/tvSalary"
         style="@style/textBold"
@@ -80,6 +80,18 @@
         app:layout_constraintEnd_toEndOf="@id/tvId"
         app:layout_constraintStart_toStartOf="@id/tvId"
         app:layout_constraintTop_toBottomOf="@id/tvCompany" />
+
+    <TextView
+        android:id="@+id/tvTotal"
+        style="@style/textBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/commonMargin"
+        android:text="@string/total"
+        app:layout_constraintEnd_toEndOf="@id/tvId"
+        app:layout_constraintStart_toStartOf="@id/tvId"
+        app:layout_constraintTop_toBottomOf="@id/tvSalary" />
+
 
     <TextView
         android:id="@+id/tvIdContain"
@@ -127,5 +139,14 @@
         app:layout_constraintStart_toEndOf="@id/tvId"
         app:layout_constraintTop_toTopOf="@id/tvSalary"
         tools:text="31563.34" />
+
+    <TextView
+        android:id="@+id/tvTotalContain"
+        style="@style/textItalic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tvId"
+        app:layout_constraintTop_toTopOf="@id/tvTotal"
+        tools:text="1983.67" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
