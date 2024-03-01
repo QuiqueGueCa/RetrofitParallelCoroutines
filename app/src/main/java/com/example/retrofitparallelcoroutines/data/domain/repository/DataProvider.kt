@@ -1,6 +1,13 @@
 package com.example.retrofitparallelcoroutines.data.domain.repository
 
-object DataProvider {
+import com.example.retrofitparallelcoroutines.data.domain.model.user.NamesListModel
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.RemoteDataSource
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.BaseResponse
+import kotlinx.coroutines.flow.Flow
 
-    // TODO: Implementar aquí al terminar con el remoteDataSource
+object DataProvider : DataSource {
+
+    override fun getNamesList(): Flow<BaseResponse<NamesListModel>> {
+        return RemoteDataSource.getNamesList()
+    }
 }

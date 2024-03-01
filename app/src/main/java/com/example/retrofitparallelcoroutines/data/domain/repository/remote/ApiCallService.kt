@@ -4,7 +4,7 @@ import com.example.retrofitparallelcoroutines.data.domain.repository.remote.resp
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.BaseResponse
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.user.NamesListResponse
 
-class RemoteApiCallService(private val remoteApiService: RemoteApiService) : BaseApiCallService() {
+class ApiCallService(private val remoteApiService: RemoteApiService) : BaseApiCallService() {
 
     suspend fun getNamesList(): BaseResponse<NamesListResponse> {
         return apiCall { remoteApiService.getNamesList() }
