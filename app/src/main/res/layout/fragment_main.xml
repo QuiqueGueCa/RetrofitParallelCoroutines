@@ -67,7 +67,7 @@
         android:text="@string/company"
         app:layout_constraintEnd_toEndOf="@id/tvId"
         app:layout_constraintStart_toStartOf="@id/tvId"
-        app:layout_constraintTop_toBottomOf="@id/tvSurnameContain" />
+        app:layout_constraintTop_toBottomOf="@id/tvSurnameContent" />
 
 
     <TextView
@@ -94,7 +94,7 @@
 
 
     <TextView
-        android:id="@+id/tvIdContain"
+        android:id="@+id/tvIdContent"
         style="@style/textItalic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
         tools:text="45" />
 
     <TextView
-        android:id="@+id/tvNameContain"
+        android:id="@+id/tvNameContent"
         style="@style/textItalic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -112,7 +112,7 @@
         tools:text="Pepe" />
 
     <TextView
-        android:id="@+id/tvSurnameContain"
+        android:id="@+id/tvSurnameContent"
         style="@style/textItalic"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -123,7 +123,7 @@
         tools:text="De Quesada López del Quintanar" />
 
     <TextView
-        android:id="@+id/tvCompanyContain"
+        android:id="@+id/tvCompanyContent"
         style="@style/textItalic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -132,7 +132,7 @@
         tools:text="Currantes SL" />
 
     <TextView
-        android:id="@+id/tvSalaryContain"
+        android:id="@+id/tvSalaryContent"
         style="@style/textItalic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -141,7 +141,7 @@
         tools:text="31563.34" />
 
     <TextView
-        android:id="@+id/tvTotalContain"
+        android:id="@+id/tvTotalContent"
         style="@style/textItalic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
