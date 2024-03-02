@@ -1,14 +1,14 @@
 package com.example.retrofitparallelcoroutines.data.domain.repository.remote
 
-import com.example.retrofitparallelcoroutines.data.domain.model.user.JobModel
-import com.example.retrofitparallelcoroutines.data.domain.model.user.NamesListModel
-import com.example.retrofitparallelcoroutines.data.domain.model.user.SalaryModel
-import com.example.retrofitparallelcoroutines.data.domain.model.user.SurnameModel
+import com.example.retrofitparallelcoroutines.data.domain.model.payroll.JobModel
+import com.example.retrofitparallelcoroutines.data.domain.model.payroll.NamesListModel
+import com.example.retrofitparallelcoroutines.data.domain.model.payroll.SalaryModel
+import com.example.retrofitparallelcoroutines.data.domain.model.payroll.SurnameModel
 import com.example.retrofitparallelcoroutines.data.domain.repository.DataSource
-import com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.user.JobMapper
-import com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.user.NamesListMapper
-import com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.user.SalaryMapper
-import com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.user.SurnameMapper
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.payroll.JobMapper
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.payroll.NamesListMapper
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.payroll.SalaryMapper
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.payroll.SurnameMapper
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.BaseResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

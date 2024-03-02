@@ -1,8 +1,8 @@
-package com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.user
+package com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.payroll
 
-import com.example.retrofitparallelcoroutines.data.domain.model.user.SalaryModel
+import com.example.retrofitparallelcoroutines.data.domain.model.payroll.SalaryModel
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.ResponseMapper
-import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.user.SalaryResponse
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.SalaryResponse
 
 class SalaryMapper : ResponseMapper<SalaryResponse, SalaryModel> {
     override fun fromResponse(response: SalaryResponse): SalaryModel {

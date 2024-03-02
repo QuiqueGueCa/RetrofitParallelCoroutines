@@ -1,9 +1,9 @@
 package com.example.retrofitparallelcoroutines.data.domain.repository
 
-import com.example.retrofitparallelcoroutines.data.domain.model.user.JobModel
-import com.example.retrofitparallelcoroutines.data.domain.model.user.NamesListModel
-import com.example.retrofitparallelcoroutines.data.domain.model.user.SalaryModel
-import com.example.retrofitparallelcoroutines.data.domain.model.user.SurnameModel
+import com.example.retrofitparallelcoroutines.data.domain.model.payroll.JobModel
+import com.example.retrofitparallelcoroutines.data.domain.model.payroll.NamesListModel
+import com.example.retrofitparallelcoroutines.data.domain.model.payroll.SalaryModel
+import com.example.retrofitparallelcoroutines.data.domain.model.payroll.SurnameModel
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.BaseResponse
 import kotlinx.coroutines.flow.Flow
 

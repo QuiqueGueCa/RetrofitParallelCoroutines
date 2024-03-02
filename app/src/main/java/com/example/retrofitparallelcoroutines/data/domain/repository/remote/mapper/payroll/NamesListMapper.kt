@@ -1,9 +1,9 @@
-package com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.user
+package com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.payroll
 
-import com.example.retrofitparallelcoroutines.data.domain.model.user.NameModel
-import com.example.retrofitparallelcoroutines.data.domain.model.user.NamesListModel
+import com.example.retrofitparallelcoroutines.data.domain.model.payroll.NameModel
+import com.example.retrofitparallelcoroutines.data.domain.model.payroll.NamesListModel
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.ResponseMapper
-import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.user.NamesListResponse
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.NamesListResponse
 
 class NamesListMapper : ResponseMapper<NamesListResponse, NamesListModel> {
     override fun fromResponse(response: NamesListResponse): NamesListModel {

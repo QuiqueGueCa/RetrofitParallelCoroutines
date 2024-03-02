@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofitparallelcoroutines.R
-import com.example.retrofitparallelcoroutines.data.domain.model.user.NameModel
+import com.example.retrofitparallelcoroutines.data.domain.model.payroll.NameModel
 import com.example.retrofitparallelcoroutines.databinding.ItemRecyclerUserBinding
 
 class UsersAdapter(

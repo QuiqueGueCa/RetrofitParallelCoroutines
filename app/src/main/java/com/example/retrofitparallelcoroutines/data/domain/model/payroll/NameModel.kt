@@ -1,4 +1,4 @@
-package com.example.retrofitparallelcoroutines.data.domain.model.user
+package com.example.retrofitparallelcoroutines.data.domain.model.payroll
 
 import com.example.retrofitparallelcoroutines.data.domain.model.BaseModel
 

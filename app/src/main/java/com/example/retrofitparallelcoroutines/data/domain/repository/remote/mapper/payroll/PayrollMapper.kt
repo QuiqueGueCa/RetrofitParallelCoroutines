@@ -1,8 +1,8 @@
-package com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.user
+package com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.payroll
 
-import com.example.retrofitparallelcoroutines.data.domain.model.user.PayrollModel
+import com.example.retrofitparallelcoroutines.data.domain.model.payroll.PayrollModel
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.RequestMapper
-import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.user.PayrollResponse
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.PayrollResponse
 
 class PayrollMapper : RequestMapper<PayrollModel, PayrollResponse> {
 

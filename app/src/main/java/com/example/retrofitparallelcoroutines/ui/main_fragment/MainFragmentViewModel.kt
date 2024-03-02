@@ -3,7 +3,7 @@ package com.example.retrofitparallelcoroutines.ui.main_fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.retrofitparallelcoroutines.data.domain.model.error.ErrorModel
-import com.example.retrofitparallelcoroutines.data.domain.model.user.NameModel
+import com.example.retrofitparallelcoroutines.data.domain.model.payroll.NameModel
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.BaseResponse
 import com.example.retrofitparallelcoroutines.data.domain.use_cases.GetNamesListUseCase
 import kotlinx.coroutines.Dispatchers

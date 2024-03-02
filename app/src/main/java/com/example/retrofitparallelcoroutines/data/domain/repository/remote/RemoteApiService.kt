@@ -1,10 +1,10 @@
 package com.example.retrofitparallelcoroutines.data.domain.repository.remote
 
-import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.user.JobResponse
-import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.user.NamesListResponse
-import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.user.PayrollResponse
-import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.user.SalaryResponse
-import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.user.SurnameResponse
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.JobResponse
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.NamesListResponse
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.PayrollResponse
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.SalaryResponse
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.SurnameResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.POST

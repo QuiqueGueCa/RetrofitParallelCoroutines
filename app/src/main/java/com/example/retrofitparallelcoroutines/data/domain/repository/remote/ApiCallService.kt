@@ -2,10 +2,10 @@ package com.example.retrofitparallelcoroutines.data.domain.repository.remote
 
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.BaseApiCallService
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.BaseResponse
-import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.user.JobResponse
-import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.user.NamesListResponse
-import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.user.SalaryResponse
-import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.user.SurnameResponse
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.JobResponse
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.NamesListResponse
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.SalaryResponse
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.SurnameResponse
 
 class ApiCallService(private val remoteApiService: RemoteApiService) : BaseApiCallService() {
 
