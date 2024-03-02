@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.retrofitparallelcoroutines.R
 import com.example.retrofitparallelcoroutines.data.domain.model.payroll.PayrollModel
 import com.example.retrofitparallelcoroutines.data.domain.use_cases.GetJobUseCase
 import com.example.retrofitparallelcoroutines.data.domain.use_cases.GetNamesListUseCase
@@ -46,19 +47,37 @@ class MainFragment : Fragment(), UsersAdapter.UserListener {
     private fun observeViewModel() {
 
         lifecycleScope.launch {
-            mViewModel.namesListStateFlow.collect { dataSet ->
+            mViewModel.namesList.collect { dataSet ->
                 mAdapter.refreshData(dataSet)
             }
         }
 
         lifecycleScope.launch {
-            mViewModel.payrollStateFlow.collect { dataSet ->
-                setInformationAtUi(dataSet)
+            mViewModel.uiState.collect { dataSet ->
+                when (dataSet) {
+                    is MainFragmentUiState.StandBy -> {
+                        mBinding.vCoverage.visibility = View.VISIBLE
+                        mBinding.progressBar.visibility = View.INVISIBLE
+                    }
+
+                    is MainFragmentUiState.Error -> {}
+
+                    is MainFragmentUiState.Success -> {
+                        mBinding.vCoverage.visibility = View.INVISIBLE
+                        mBinding.progressBar.visibility = View.INVISIBLE
+                        setInformationAtUi(dataSet.payrollModel)
+                    }
+
+                    is MainFragmentUiState.Loading -> {
+                        mBinding.vCoverage.visibility = View.VISIBLE
+                        mBinding.progressBar.visibility = View.VISIBLE
+                    }
+                }
             }
         }
 
         lifecycleScope.launch {
-            mViewModel.namesListErrorSharedFlow.collect { error ->
+            mViewModel.namesListError.collect { error ->
                 Toast.makeText(
                     requireContext(),
                     error.message,
@@ -67,7 +86,7 @@ class MainFragment : Fragment(), UsersAdapter.UserListener {
             }
         }
         lifecycleScope.launch {
-            mViewModel.surnameErrorSharedFlow.collect { error ->
+            mViewModel.surnameError.collect { error ->
                 Toast.makeText(
                     requireContext(),
                     error.message,
@@ -76,7 +95,7 @@ class MainFragment : Fragment(), UsersAdapter.UserListener {
             }
         }
         lifecycleScope.launch {
-            mViewModel.jobErrorSharedFlow.collect { error ->
+            mViewModel.jobError.collect { error ->
                 Toast.makeText(
                     requireContext(),
                     error.message,
@@ -85,7 +104,7 @@ class MainFragment : Fragment(), UsersAdapter.UserListener {
             }
         }
         lifecycleScope.launch {
-            mViewModel.salaryErrorSharedFlow.collect { error ->
+            mViewModel.salaryError.collect { error ->
                 Toast.makeText(
                     requireContext(),
                     error.message,
@@ -101,7 +120,8 @@ class MainFragment : Fragment(), UsersAdapter.UserListener {
             tvNameContent.text = dataSet.name
             tvSurnameContent.text = dataSet.surname
             tvCompanyContent.text = dataSet.company
-            tvSalaryContent.text = dataSet.salary.toString()
+            tvSalaryContent.text = getString(R.string.salaryCurrent, dataSet.salary.toString())
+            tvTotalContent.text = getString(R.string.totalCurrent, dataSet.total.toString())
         }
     }
 

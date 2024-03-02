@@ -31,43 +31,42 @@ class MainFragmentViewModel(
     private val getSalaryUseCase: GetSalaryUseCase
 ) : ViewModel() {
 
-    private val namesListErrorMutableSharedFlow = MutableSharedFlow<ErrorModel>()
-    val namesListErrorSharedFlow: SharedFlow<ErrorModel> = namesListErrorMutableSharedFlow
+    private val _namesListError = MutableSharedFlow<ErrorModel>()
+    val namesListError: SharedFlow<ErrorModel> = _namesListError
 
-    private val surnameErrorMutableSharedFlow = MutableSharedFlow<ErrorModel>()
-    val surnameErrorSharedFlow: SharedFlow<ErrorModel> = surnameErrorMutableSharedFlow
+    private val _surnameError = MutableSharedFlow<ErrorModel>()
+    val surnameError: SharedFlow<ErrorModel> = _surnameError
 
-    private val jobErrorMutableSharedFlow = MutableSharedFlow<ErrorModel>()
-    val jobErrorSharedFlow: SharedFlow<ErrorModel> = jobErrorMutableSharedFlow
+    private val _jobError = MutableSharedFlow<ErrorModel>()
+    val jobError: SharedFlow<ErrorModel> = _jobError
 
-    private val salaryErrorMutableSharedFlow = MutableSharedFlow<ErrorModel>()
-    val salaryErrorSharedFlow: SharedFlow<ErrorModel> = salaryErrorMutableSharedFlow
+    private val _salaryError = MutableSharedFlow<ErrorModel>()
+    val salaryError: SharedFlow<ErrorModel> = _salaryError
 
 
-    private val namesListMutableStateFlow =
+    private val _namesList =
         MutableStateFlow<MutableList<NameModel>>(mutableListOf())
-    val namesListStateFlow: StateFlow<MutableList<NameModel>> = namesListMutableStateFlow
+    val namesList: StateFlow<MutableList<NameModel>> = _namesList
 
-    private val payrollMutableStateFlow = MutableStateFlow(PayrollModel())
-    val payrollStateFlow: StateFlow<PayrollModel> = payrollMutableStateFlow
+    private val _uiState = MutableStateFlow<MainFragmentUiState>(MainFragmentUiState.StandBy)
+    val uiState: StateFlow<MainFragmentUiState> = _uiState
 
     private val names = mutableListOf<NameModel>()
     private var surnameModel = SurnameModel()
     private var jobModel = JobModel()
     private var salaryModel = SalaryModel()
-    //private var payrollModel = PayrollModel()
 
     fun getNamesList() {
         viewModelScope.launch(Dispatchers.IO) {
             getNamesListUseCase().collect {
                 when (it) {
                     is BaseResponse.Error -> {
-                        namesListErrorMutableSharedFlow.emit(it.error)
+                        _namesListError.emit(it.error)
                     }
 
                     is BaseResponse.Success -> {
                         names.addAll(it.data.names)
-                        namesListMutableStateFlow.value = names
+                        _namesList.value = names
                     }
                 }
             }
@@ -75,6 +74,8 @@ class MainFragmentViewModel(
     }
 
     fun getPayroll(idUser: Int) {
+        _uiState.value = MainFragmentUiState.Loading
+
         viewModelScope.launch(Dispatchers.IO) {
             val deferreds = listOf(
                 async { getSurnameUseCase.invoke(idUser) },
@@ -86,12 +87,16 @@ class MainFragmentViewModel(
             getJob(response[1])
             getSalary(response[2])
 
-            payrollMutableStateFlow.value = PayrollModel(
-                idUser,
-                surnameModel.name,
-                surnameModel.surname,
-                jobModel.company,
-                salaryModel.salary
+            _uiState.value = MainFragmentUiState.Success(
+                PayrollModel(
+                    idUser,
+                    surnameModel.name,
+                    surnameModel.surname,
+                    jobModel.company,
+                    salaryModel.salary,
+                    salaryModel.tax,
+                    salaryModel.formation
+                )
             )
         }
     }
@@ -100,7 +105,7 @@ class MainFragmentViewModel(
         flow.collect {
             when (it) {
                 is BaseResponse.Error -> {
-                    salaryErrorMutableSharedFlow.emit(it.error)
+                    _salaryError.emit(it.error)
                 }
 
                 is BaseResponse.Success -> {
@@ -114,7 +119,7 @@ class MainFragmentViewModel(
         flow.collect {
             when (it) {
                 is BaseResponse.Error -> {
-                    jobErrorMutableSharedFlow.emit(it.error)
+                    _jobError.emit(it.error)
                 }
 
                 is BaseResponse.Success -> {
@@ -128,7 +133,7 @@ class MainFragmentViewModel(
         flow.collect {
             when (it) {
                 is BaseResponse.Error -> {
-                    surnameErrorMutableSharedFlow.emit(it.error)
+                    _surnameError.emit(it.error)
                 }
 
                 is BaseResponse.Success -> {
