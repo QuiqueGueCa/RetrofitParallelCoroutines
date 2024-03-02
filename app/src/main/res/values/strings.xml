@@ -6,6 +6,10 @@
     <string name="company">Compañía:</string>
     <string name="salary">Salario:</string>
     <string name="total">Total:</string>
-    <string name="salaryCurrent">%1$s €</string>
-    <string name="totalCurrent">%1$s €</string>
+    <string name="salaryCurrent">%1$s€</string>
+    <string name="totalCurrent">%1$s€</string>
+    <string name="tax">Impuesto:</string>
+    <string name="formation">Formación:</string>
+    <string name="taxPercent">%1$s%</string>
+    <string name="formationOverTotal">%1$s sobre el total</string>
 </resources>

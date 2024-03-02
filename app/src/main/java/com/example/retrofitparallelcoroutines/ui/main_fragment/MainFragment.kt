@@ -116,11 +116,13 @@ class MainFragment : Fragment(), UsersAdapter.UserListener {
 
     private fun setInformationAtUi(dataSet: PayrollModel) {
         with(mBinding) {
-            tvIdContent.text = dataSet.id.toString()
             tvNameContent.text = dataSet.name
             tvSurnameContent.text = dataSet.surname
             tvCompanyContent.text = dataSet.company
             tvSalaryContent.text = getString(R.string.salaryCurrent, dataSet.salary.toString())
+            tvTaxContent.text = "${dataSet.tax}%"
+            tvFormationContent.text =
+                getString(R.string.formationOverTotal, dataSet.formation.toString())
             tvTotalContent.text = getString(R.string.totalCurrent, dataSet.total.toString())
         }
     }

@@ -30,25 +30,14 @@
         app:layout_constraintTop_toBottomOf="@id/recyclerView" />
 
     <TextView
-        android:id="@+id/tvId"
+        android:id="@+id/tvName"
         style="@style/textBold"
         android:layout_width="@dimen/tvWidth"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/largeMargin"
-        android:text="@string/id"
+        android:text="@string/name"
         app:layout_constraintLeft_toRightOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@id/recyclerView" />
-
-    <TextView
-        android:id="@+id/tvName"
-        style="@style/textBold"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/commonMargin"
-        android:text="@string/name"
-        app:layout_constraintEnd_toEndOf="@id/tvId"
-        app:layout_constraintStart_toStartOf="@id/tvId"
-        app:layout_constraintTop_toBottomOf="@id/tvId" />
 
     <TextView
         android:id="@+id/tvSurname"
@@ -57,8 +46,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/commonMargin"
         android:text="@string/surname"
-        app:layout_constraintEnd_toEndOf="@id/tvId"
-        app:layout_constraintStart_toStartOf="@id/tvId"
+        app:layout_constraintEnd_toEndOf="@id/tvName"
+        app:layout_constraintStart_toStartOf="@id/tvName"
         app:layout_constraintTop_toBottomOf="@id/tvName" />
 
     <TextView
@@ -68,8 +57,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/commonMargin"
         android:text="@string/company"
-        app:layout_constraintEnd_toEndOf="@id/tvId"
-        app:layout_constraintStart_toStartOf="@id/tvId"
+        app:layout_constraintEnd_toEndOf="@id/tvName"
+        app:layout_constraintStart_toStartOf="@id/tvName"
         app:layout_constraintTop_toBottomOf="@id/tvSurnameContent" />
 
 
@@ -80,9 +69,31 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/commonMargin"
         android:text="@string/salary"
-        app:layout_constraintEnd_toEndOf="@id/tvId"
-        app:layout_constraintStart_toStartOf="@id/tvId"
+        app:layout_constraintEnd_toEndOf="@id/tvName"
+        app:layout_constraintStart_toStartOf="@id/tvName"
         app:layout_constraintTop_toBottomOf="@id/tvCompany" />
+
+    <TextView
+        android:id="@+id/tvTax"
+        style="@style/textBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/commonMargin"
+        android:text="@string/tax"
+        app:layout_constraintEnd_toEndOf="@id/tvName"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@id/tvSalary" />
+
+    <TextView
+        android:id="@+id/tvFormation"
+        style="@style/textBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/commonMargin"
+        android:text="@string/formation"
+        app:layout_constraintEnd_toEndOf="@id/tvName"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@id/tvTax" />
 
     <TextView
         android:id="@+id/tvTotal"
@@ -91,26 +102,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/commonMargin"
         android:text="@string/total"
-        app:layout_constraintEnd_toEndOf="@id/tvId"
-        app:layout_constraintStart_toStartOf="@id/tvId"
-        app:layout_constraintTop_toBottomOf="@id/tvSalary" />
+        app:layout_constraintEnd_toEndOf="@id/tvName"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@id/tvFormationContent" />
 
-
-    <TextView
-        android:id="@+id/tvIdContent"
-        style="@style/textItalic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/tvId"
-        app:layout_constraintTop_toTopOf="@id/tvId"
-        tools:text="45" />
 
     <TextView
         android:id="@+id/tvNameContent"
         style="@style/textItalic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/tvId"
+        app:layout_constraintStart_toEndOf="@id/tvName"
         app:layout_constraintTop_toTopOf="@id/tvName"
         tools:text="Pepe" />
 
@@ -121,7 +123,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/largeMargin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvId"
+        app:layout_constraintStart_toEndOf="@id/tvName"
         app:layout_constraintTop_toTopOf="@id/tvSurname"
         tools:text="De Quesada López del Quintanar" />
 
@@ -130,7 +132,7 @@
         style="@style/textItalic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/tvId"
+        app:layout_constraintStart_toEndOf="@id/tvName"
         app:layout_constraintTop_toTopOf="@id/tvCompany"
         tools:text="Currantes SL" />
 
@@ -139,16 +141,36 @@
         style="@style/textItalic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/tvId"
+        app:layout_constraintStart_toEndOf="@id/tvName"
         app:layout_constraintTop_toTopOf="@id/tvSalary"
         tools:text="31563.34" />
+
+    <TextView
+        android:id="@+id/tvTaxContent"
+        style="@style/textItalic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tvName"
+        app:layout_constraintTop_toTopOf="@id/tvTax"
+        tools:text="14" />
+
+    <TextView
+        android:id="@+id/tvFormationContent"
+        style="@style/textItalic"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/largeMargin"
+        app:layout_constraintStart_toEndOf="@id/tvName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvFormation"
+        tools:text="0.89 sobre el total" />
 
     <TextView
         android:id="@+id/tvTotalContent"
         style="@style/textItalic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/tvId"
+        app:layout_constraintStart_toEndOf="@id/tvName"
         app:layout_constraintTop_toTopOf="@id/tvTotal"
         tools:text="1983.67" />
 
@@ -157,15 +179,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        android:visibility="invisible"
         app:layout_constraintTop_toBottomOf="@id/vDivider" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
