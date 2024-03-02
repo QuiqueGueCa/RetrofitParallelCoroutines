@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="commonMargin">16dp</dimen>
+    <dimen name="commonMargin">8dp</dimen>
     <dimen name="recyclerHeight">200dp</dimen>
     <dimen name="textSize">20sp</dimen>
-    <dimen name="largeMargin">26dp</dimen>
+    <dimen name="largeMargin">16dp</dimen>
     <dimen name="tvWidth">120dp</dimen>
     <dimen name="width_item_user">300dp</dimen>
     <dimen name="height_item_user">110dp</dimen>

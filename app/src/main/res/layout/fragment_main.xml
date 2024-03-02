@@ -15,11 +15,18 @@
         tools:listitem="@layout/item_recycler_user" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
+        android:id="@+id/guidelineLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.15" />
+        app:layout_constraintGuide_percent="0.10" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
 
     <View
         android:id="@+id/vDivider"
@@ -30,14 +37,26 @@
         app:layout_constraintTop_toBottomOf="@id/recyclerView" />
 
     <TextView
+        android:id="@+id/tvId"
+        style="@style/textBold"
+        android:layout_width="@dimen/tvWidth"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/largeMargin"
+        android:text="@string/id"
+        app:layout_constraintLeft_toRightOf="@id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@id/recyclerView" />
+
+
+    <TextView
         android:id="@+id/tvName"
         style="@style/textBold"
         android:layout_width="@dimen/tvWidth"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/largeMargin"
         android:text="@string/name"
-        app:layout_constraintLeft_toRightOf="@id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/recyclerView" />
+        app:layout_constraintEnd_toEndOf="@id/tvId"
+        app:layout_constraintStart_toStartOf="@id/tvId"
+        app:layout_constraintTop_toBottomOf="@id/tvId" />
 
     <TextView
         android:id="@+id/tvSurname"
@@ -61,6 +80,16 @@
         app:layout_constraintStart_toStartOf="@id/tvName"
         app:layout_constraintTop_toBottomOf="@id/tvSurnameContent" />
 
+    <TextView
+        android:id="@+id/tvJob"
+        style="@style/textBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/commonMargin"
+        android:text="@string/job"
+        app:layout_constraintEnd_toEndOf="@id/tvName"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@id/tvCompany" />
 
     <TextView
         android:id="@+id/tvSalary"
@@ -71,8 +100,29 @@
         android:text="@string/salary"
         app:layout_constraintEnd_toEndOf="@id/tvName"
         app:layout_constraintStart_toStartOf="@id/tvName"
-        app:layout_constraintTop_toBottomOf="@id/tvCompany" />
+        app:layout_constraintTop_toBottomOf="@id/tvJob" />
 
+    <TextView
+        android:id="@+id/tvTax"
+        style="@style/textBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/commonMargin"
+        android:text="@string/tax"
+        app:layout_constraintEnd_toEndOf="@id/tvName"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@id/tvSalary" />
+
+    <TextView
+        android:id="@+id/tvFormation"
+        style="@style/textBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/commonMargin"
+        android:text="@string/formation"
+        app:layout_constraintEnd_toEndOf="@id/tvName"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@id/tvTax" />
 
     <TextView
         android:id="@+id/tvTotal"
@@ -83,8 +133,16 @@
         android:text="@string/total"
         app:layout_constraintEnd_toEndOf="@id/tvName"
         app:layout_constraintStart_toStartOf="@id/tvName"
-        app:layout_constraintTop_toBottomOf="@id/tvSalary" />
+        app:layout_constraintTop_toBottomOf="@id/tvFormationContent" />
 
+    <TextView
+        android:id="@+id/tvIdContent"
+        style="@style/textItalic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tvId"
+        app:layout_constraintTop_toTopOf="@id/tvId"
+        tools:text="3" />
 
     <TextView
         android:id="@+id/tvNameContent"
@@ -100,8 +158,7 @@
         style="@style/textItalic"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/largeMargin"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guidelineRight"
         app:layout_constraintStart_toEndOf="@id/tvName"
         app:layout_constraintTop_toTopOf="@id/tvSurname"
         tools:text="De Quesada López del Quintanar" />
@@ -116,6 +173,16 @@
         tools:text="Currantes SL" />
 
     <TextView
+        android:id="@+id/tvJobContent"
+        style="@style/textItalic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tvName"
+        app:layout_constraintTop_toTopOf="@id/tvJob"
+        tools:text="Currantes SL" />
+
+
+    <TextView
         android:id="@+id/tvSalaryContent"
         style="@style/textItalic"
         android:layout_width="wrap_content"
@@ -123,6 +190,26 @@
         app:layout_constraintStart_toEndOf="@id/tvName"
         app:layout_constraintTop_toTopOf="@id/tvSalary"
         tools:text="31563.34" />
+
+    <TextView
+        android:id="@+id/tvTaxContent"
+        style="@style/textItalic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tvName"
+        app:layout_constraintTop_toTopOf="@id/tvTax"
+        tools:text="14" />
+
+    <TextView
+        android:id="@+id/tvFormationContent"
+        style="@style/textItalic"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/largeMargin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvName"
+        app:layout_constraintTop_toTopOf="@id/tvFormation"
+        tools:text="0.89 sobre el total" />
 
     <TextView
         android:id="@+id/tvTotalContent"
@@ -142,7 +229,17 @@
         app:layout_constraintTop_toBottomOf="@id/vDivider" />
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/progressBarList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBarUserData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="invisible"

@@ -3,6 +3,7 @@ package com.example.retrofitparallelcoroutines.ui.main_fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.retrofitparallelcoroutines.data.domain.model.BaseModel
+import com.example.retrofitparallelcoroutines.data.domain.model.UserModel
 import com.example.retrofitparallelcoroutines.data.domain.model.error.ErrorModel
 import com.example.retrofitparallelcoroutines.data.domain.model.payroll.JobModel
 import com.example.retrofitparallelcoroutines.data.domain.model.payroll.NameModel
@@ -45,12 +46,15 @@ class MainFragmentViewModel(
     private val _salaryError = MutableSharedFlow<ErrorModel>()
     val salaryError: SharedFlow<ErrorModel> = _salaryError
 
+    private val _payrollError = MutableSharedFlow<ErrorModel>()
+    val payrollError: SharedFlow<ErrorModel> = _payrollError
+
 
     private val _namesList =
         MutableStateFlow<MutableList<NameModel>>(mutableListOf())
     val namesList: StateFlow<MutableList<NameModel>> = _namesList
 
-    private val _uiState = MutableStateFlow<MainFragmentUiState>(MainFragmentUiState.StandBy)
+    private val _uiState = MutableStateFlow<MainFragmentUiState>(MainFragmentUiState.LoadingList)
     val uiState: StateFlow<MainFragmentUiState> = _uiState
 
     private val names = mutableListOf<NameModel>()
@@ -69,6 +73,7 @@ class MainFragmentViewModel(
                     is BaseResponse.Success -> {
                         names.addAll(it.data.names)
                         _namesList.value = names
+                        _uiState.value = MainFragmentUiState.ListLoaded
                     }
                 }
             }
@@ -76,7 +81,7 @@ class MainFragmentViewModel(
     }
 
     fun getPayroll(idUser: Int) {
-        _uiState.value = MainFragmentUiState.Loading
+        _uiState.value = MainFragmentUiState.LoadingUserData
 
         viewModelScope.launch(Dispatchers.IO) {
             val deferreds = listOf(
@@ -106,17 +111,20 @@ class MainFragmentViewModel(
             ).collect {
                 when (it) {
                     is BaseResponse.Error -> {
-                        _namesListError.emit(it.error)
+                        _payrollError.emit(it.error)
                     }
 
                     is BaseResponse.Success -> {
                         _uiState.value = MainFragmentUiState.Success(
-                            PayrollModel(
-                                it.data.id,
-                                it.data.name,
-                                it.data.surname,
-                                it.data.company,
-                                it.data.salary,
+                            UserModel(
+                                idUser,
+                                surnameModel.name,
+                                surnameModel.surname,
+                                jobModel.company,
+                                jobModel.job,
+                                salaryModel.salary,
+                                salaryModel.tax,
+                                salaryModel.formation,
                                 it.data.total
                             )
                         )

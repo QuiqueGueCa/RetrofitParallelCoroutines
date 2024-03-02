@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.retrofitparallelcoroutines.R
-import com.example.retrofitparallelcoroutines.data.domain.model.payroll.PayrollModel
+import com.example.retrofitparallelcoroutines.data.domain.model.UserModel
 import com.example.retrofitparallelcoroutines.data.domain.use_cases.GetJobUseCase
 import com.example.retrofitparallelcoroutines.data.domain.use_cases.GetNamesListUseCase
 import com.example.retrofitparallelcoroutines.data.domain.use_cases.GetSalaryUseCase
@@ -57,24 +57,40 @@ class MainFragment : Fragment(), UsersAdapter.UserListener {
         lifecycleScope.launch {
             mViewModel.uiState.collect { dataSet ->
                 when (dataSet) {
-                    is MainFragmentUiState.StandBy -> {
+                    is MainFragmentUiState.LoadingList -> {
+                        mBinding.progressBarList.visibility = View.VISIBLE
                         mBinding.vCoverage.visibility = View.VISIBLE
-                        mBinding.progressBar.visibility = View.INVISIBLE
+                    }
+
+                    is MainFragmentUiState.ListLoaded -> {
+                        mBinding.vCoverage.visibility = View.VISIBLE
+                        mBinding.progressBarUserData.visibility = View.INVISIBLE
+                        mBinding.progressBarList.visibility = View.INVISIBLE
                     }
 
                     is MainFragmentUiState.Error -> {}
 
                     is MainFragmentUiState.Success -> {
                         mBinding.vCoverage.visibility = View.INVISIBLE
-                        mBinding.progressBar.visibility = View.INVISIBLE
-                        setInformationAtUi(dataSet.payrollModel)
+                        mBinding.progressBarUserData.visibility = View.INVISIBLE
+                        setInformationAtUi(dataSet.userModel)
                     }
 
-                    is MainFragmentUiState.Loading -> {
+                    is MainFragmentUiState.LoadingUserData -> {
                         mBinding.vCoverage.visibility = View.VISIBLE
-                        mBinding.progressBar.visibility = View.VISIBLE
+                        mBinding.progressBarUserData.visibility = View.VISIBLE
                     }
                 }
+            }
+        }
+
+        lifecycleScope.launch {
+            mViewModel.payrollError.collect { error ->
+                Toast.makeText(
+                    requireContext(),
+                    error.message,
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
@@ -116,12 +132,16 @@ class MainFragment : Fragment(), UsersAdapter.UserListener {
         }
     }
 
-    private fun setInformationAtUi(dataSet: PayrollModel) {
+    private fun setInformationAtUi(dataSet: UserModel) {
         with(mBinding) {
+            tvIdContent.text = dataSet.id.toString()
             tvNameContent.text = dataSet.name
             tvSurnameContent.text = dataSet.surname
             tvCompanyContent.text = dataSet.company
+            tvJobContent.text = dataSet.job
             tvSalaryContent.text = getString(R.string.salaryCurrent, dataSet.salary.toString())
+            tvTaxContent.text = dataSet.tax.toString()
+            tvFormationContent.text = dataSet.formation.toString()
             tvTotalContent.text = getString(R.string.totalCurrent, dataSet.total.toString())
         }
     }

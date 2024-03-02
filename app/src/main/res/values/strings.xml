@@ -12,4 +12,5 @@
     <string name="formation">Formación:</string>
     <string name="taxPercent">%1$s%</string>
     <string name="formationOverTotal">%1$s sobre el total</string>
+    <string name="job">Trabajo:</string>
 </resources>

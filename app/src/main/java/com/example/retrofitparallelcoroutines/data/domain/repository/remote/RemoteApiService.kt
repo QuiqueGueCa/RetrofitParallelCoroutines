@@ -1,5 +1,6 @@
 package com.example.retrofitparallelcoroutines.data.domain.repository.remote
 
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.request.PayrollRequest
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.JobResponse
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.NamesListResponse
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.PayrollResponse
@@ -32,6 +33,6 @@ interface RemoteApiService {
 
     @POST("payroll")
     suspend fun postPayroll(
-        @Body payroll: PayrollResponse
+        @Body payrollRequest: PayrollRequest
     ): Response<PayrollResponse>
 }

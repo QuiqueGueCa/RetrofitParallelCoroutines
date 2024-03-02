@@ -1,11 +1,12 @@
 package com.example.retrofitparallelcoroutines.ui.main_fragment
 
-import com.example.retrofitparallelcoroutines.data.domain.model.payroll.PayrollModel
+import com.example.retrofitparallelcoroutines.data.domain.model.UserModel
 
 sealed class MainFragmentUiState {
 
-    data object Loading : MainFragmentUiState()
-    data class Success(val payrollModel: PayrollModel) : MainFragmentUiState()
+    data object LoadingUserData : MainFragmentUiState()
+    data object LoadingList : MainFragmentUiState()
+    data class Success(val userModel: UserModel) : MainFragmentUiState()
     data class Error(val msg: String) : MainFragmentUiState()
-    data object StandBy : MainFragmentUiState()
+    data object ListLoaded : MainFragmentUiState()
 }

@@ -1,5 +1,6 @@
 package com.example.retrofitparallelcoroutines.data.domain.repository.remote
 
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.request.PayrollRequest
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.BaseApiCallService
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.BaseResponse
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.JobResponse
@@ -26,7 +27,7 @@ class ApiCallService(private val remoteApiService: RemoteApiService) : BaseApiCa
         return apiCall { remoteApiService.getSalary(idUser) }
     }
 
-    suspend fun postPayroll(payrollResponse: PayrollResponse): BaseResponse<PayrollResponse> {
-        return apiCall { remoteApiService.postPayroll(payrollResponse) }
+    suspend fun postPayroll(payrollRequest: PayrollRequest): BaseResponse<PayrollResponse> {
+        return apiCall { remoteApiService.postPayroll(payrollRequest) }
     }
 }

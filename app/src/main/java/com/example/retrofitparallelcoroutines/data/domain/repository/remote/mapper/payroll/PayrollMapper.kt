@@ -3,19 +3,19 @@ package com.example.retrofitparallelcoroutines.data.domain.repository.remote.map
 import com.example.retrofitparallelcoroutines.data.domain.model.payroll.PayrollModel
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.RequestMapper
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.ResponseMapper
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.request.PayrollRequest
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.PayrollResponse
 
-class PayrollMapper : RequestMapper<PayrollModel, PayrollResponse>,
+class PayrollMapper : RequestMapper<PayrollModel, PayrollRequest>,
     ResponseMapper<PayrollResponse, PayrollModel> {
 
-    override fun toRequest(model: PayrollModel): PayrollResponse {
-        return PayrollResponse(
+    override fun toRequest(model: PayrollModel): PayrollRequest {
+        return PayrollRequest(
             model.id,
             model.name,
             model.surname,
             model.company,
-            model.salary,
-            model.total
+            model.salary
         )
     }
 
