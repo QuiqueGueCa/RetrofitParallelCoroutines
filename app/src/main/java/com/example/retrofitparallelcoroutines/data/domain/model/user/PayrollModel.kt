@@ -4,7 +4,7 @@ import com.example.retrofitparallelcoroutines.data.domain.model.BaseModel
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class UserModel(
+data class PayrollModel(
     val id: Int = 0,
     val name: String = "",
     val surname: String = "",
