@@ -10,12 +10,5 @@ data class PayrollModel(
     val surname: String = "",
     val company: String = "",
     val salary: Float = 0.0f,
-    val tax: Int = 0,
-    val formation: Float = 0.0f,
-    var total: Float = 0.0f
-) : BaseModel() {
-
-    init {
-        total = salary - (salary * tax / 100) * formation
-    }
-}
+    val total: Float = 0.0f
+) : BaseModel()

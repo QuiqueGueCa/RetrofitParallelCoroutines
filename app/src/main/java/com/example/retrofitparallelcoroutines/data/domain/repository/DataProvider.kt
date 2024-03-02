@@ -2,6 +2,7 @@ package com.example.retrofitparallelcoroutines.data.domain.repository
 
 import com.example.retrofitparallelcoroutines.data.domain.model.payroll.JobModel
 import com.example.retrofitparallelcoroutines.data.domain.model.payroll.NamesListModel
+import com.example.retrofitparallelcoroutines.data.domain.model.payroll.PayrollModel
 import com.example.retrofitparallelcoroutines.data.domain.model.payroll.SalaryModel
 import com.example.retrofitparallelcoroutines.data.domain.model.payroll.SurnameModel
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.RemoteDataSource
@@ -24,5 +25,9 @@ object DataProvider : DataSource {
 
     override fun getSalary(idUser: Int): Flow<BaseResponse<SalaryModel>> {
         return RemoteDataSource.getSalary(idUser)
+    }
+
+    override fun postPayroll(payrollModel: PayrollModel): Flow<BaseResponse<PayrollModel>> {
+        return RemoteDataSource.postPayroll(payrollModel)
     }
 }

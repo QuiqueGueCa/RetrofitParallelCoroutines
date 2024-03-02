@@ -4,6 +4,7 @@ import com.example.retrofitparallelcoroutines.data.domain.repository.remote.resp
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.BaseResponse
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.JobResponse
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.NamesListResponse
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.PayrollResponse
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.SalaryResponse
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.SurnameResponse
 
@@ -23,5 +24,9 @@ class ApiCallService(private val remoteApiService: RemoteApiService) : BaseApiCa
 
     suspend fun getSalary(idUser: Int): BaseResponse<SalaryResponse> {
         return apiCall { remoteApiService.getSalary(idUser) }
+    }
+
+    suspend fun postPayroll(payrollResponse: PayrollResponse): BaseResponse<PayrollResponse> {
+        return apiCall { remoteApiService.postPayroll(payrollResponse) }
     }
 }

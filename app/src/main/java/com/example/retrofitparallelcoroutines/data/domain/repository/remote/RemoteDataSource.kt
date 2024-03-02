@@ -2,11 +2,13 @@ package com.example.retrofitparallelcoroutines.data.domain.repository.remote
 
 import com.example.retrofitparallelcoroutines.data.domain.model.payroll.JobModel
 import com.example.retrofitparallelcoroutines.data.domain.model.payroll.NamesListModel
+import com.example.retrofitparallelcoroutines.data.domain.model.payroll.PayrollModel
 import com.example.retrofitparallelcoroutines.data.domain.model.payroll.SalaryModel
 import com.example.retrofitparallelcoroutines.data.domain.model.payroll.SurnameModel
 import com.example.retrofitparallelcoroutines.data.domain.repository.DataSource
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.payroll.JobMapper
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.payroll.NamesListMapper
+import com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.payroll.PayrollMapper
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.payroll.SalaryMapper
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.mapper.payroll.SurnameMapper
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.BaseResponse
@@ -48,6 +50,15 @@ object RemoteDataSource : DataSource {
         val apiResult = apiCallService.getSalary(idUser)
         if (apiResult is BaseResponse.Success) {
             emit(BaseResponse.Success(SalaryMapper().fromResponse(apiResult.data)))
+        } else if (apiResult is BaseResponse.Error) {
+            emit(BaseResponse.Error(apiResult.error))
+        }
+    }
+
+    override fun postPayroll(payrollModel: PayrollModel): Flow<BaseResponse<PayrollModel>> = flow {
+        val apiResult = apiCallService.postPayroll(PayrollMapper().toRequest(payrollModel))
+        if (apiResult is BaseResponse.Success) {
+            emit(BaseResponse.Success(PayrollMapper().fromResponse(apiResult.data)))
         } else if (apiResult is BaseResponse.Error) {
             emit(BaseResponse.Error(apiResult.error))
         }

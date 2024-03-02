@@ -4,15 +4,15 @@ import com.google.gson.annotations.SerializedName
 
 data class PayrollResponse(
     @SerializedName("id")
-    val id: Int,
+    val id: Int?,
     @SerializedName("name")
-    val name: String,
+    val name: String?,
     @SerializedName("surname")
-    val surname: String,
+    val surname: String?,
     @SerializedName("company")
-    val company: String,
+    val company: String?,
     @SerializedName("salary")
-    val salary: Float,
+    val salary: Float?,
     @SerializedName("total")
-    val total: Float
+    val total: Float?
 )

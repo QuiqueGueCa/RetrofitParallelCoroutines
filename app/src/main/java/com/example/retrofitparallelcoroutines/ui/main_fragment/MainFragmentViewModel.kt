@@ -14,6 +14,7 @@ import com.example.retrofitparallelcoroutines.data.domain.use_cases.GetJobUseCas
 import com.example.retrofitparallelcoroutines.data.domain.use_cases.GetNamesListUseCase
 import com.example.retrofitparallelcoroutines.data.domain.use_cases.GetSalaryUseCase
 import com.example.retrofitparallelcoroutines.data.domain.use_cases.GetSurnameUseCase
+import com.example.retrofitparallelcoroutines.data.domain.use_cases.PostPayrollUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -28,7 +29,8 @@ class MainFragmentViewModel(
     private val getNamesListUseCase: GetNamesListUseCase,
     private val getSurnameUseCase: GetSurnameUseCase,
     private val getJobUseCase: GetJobUseCase,
-    private val getSalaryUseCase: GetSalaryUseCase
+    private val getSalaryUseCase: GetSalaryUseCase,
+    private val postPayrollUseCase: PostPayrollUseCase
 ) : ViewModel() {
 
     private val _namesListError = MutableSharedFlow<ErrorModel>()
@@ -87,17 +89,40 @@ class MainFragmentViewModel(
             getJob(response[1])
             getSalary(response[2])
 
-            _uiState.value = MainFragmentUiState.Success(
+            postPayroll(idUser)
+        }
+    }
+
+    private fun postPayroll(idUser: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            postPayrollUseCase(
                 PayrollModel(
                     idUser,
                     surnameModel.name,
                     surnameModel.surname,
                     jobModel.company,
                     salaryModel.salary,
-                    salaryModel.tax,
-                    salaryModel.formation
                 )
-            )
+            ).collect {
+                when (it) {
+                    is BaseResponse.Error -> {
+                        _namesListError.emit(it.error)
+                    }
+
+                    is BaseResponse.Success -> {
+                        _uiState.value = MainFragmentUiState.Success(
+                            PayrollModel(
+                                it.data.id,
+                                it.data.name,
+                                it.data.surname,
+                                it.data.company,
+                                it.data.salary,
+                                it.data.total
+                            )
+                        )
+                    }
+                }
+            }
         }
     }
 

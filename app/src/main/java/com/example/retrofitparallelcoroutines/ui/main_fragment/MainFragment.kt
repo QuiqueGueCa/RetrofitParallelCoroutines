@@ -14,6 +14,7 @@ import com.example.retrofitparallelcoroutines.data.domain.use_cases.GetJobUseCas
 import com.example.retrofitparallelcoroutines.data.domain.use_cases.GetNamesListUseCase
 import com.example.retrofitparallelcoroutines.data.domain.use_cases.GetSalaryUseCase
 import com.example.retrofitparallelcoroutines.data.domain.use_cases.GetSurnameUseCase
+import com.example.retrofitparallelcoroutines.data.domain.use_cases.PostPayrollUseCase
 import com.example.retrofitparallelcoroutines.databinding.FragmentMainBinding
 import com.example.retrofitparallelcoroutines.ui.main_fragment.adapter.UsersAdapter
 import kotlinx.coroutines.launch
@@ -27,6 +28,7 @@ class MainFragment : Fragment(), UsersAdapter.UserListener {
         GetSurnameUseCase(),
         GetJobUseCase(),
         GetSalaryUseCase(),
+        PostPayrollUseCase()
     )
 
     override fun onCreateView(
@@ -120,9 +122,6 @@ class MainFragment : Fragment(), UsersAdapter.UserListener {
             tvSurnameContent.text = dataSet.surname
             tvCompanyContent.text = dataSet.company
             tvSalaryContent.text = getString(R.string.salaryCurrent, dataSet.salary.toString())
-            tvTaxContent.text = "${dataSet.tax}%"
-            tvFormationContent.text =
-                getString(R.string.formationOverTotal, dataSet.formation.toString())
             tvTotalContent.text = getString(R.string.totalCurrent, dataSet.total.toString())
         }
     }

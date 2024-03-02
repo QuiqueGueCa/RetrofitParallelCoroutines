@@ -6,6 +6,7 @@ import com.example.retrofitparallelcoroutines.data.domain.repository.remote.resp
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.SalaryResponse
 import com.example.retrofitparallelcoroutines.data.domain.repository.remote.response.payroll.SurnameResponse
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -30,5 +31,7 @@ interface RemoteApiService {
     ): Response<SalaryResponse>
 
     @POST("payroll")
-    suspend fun setPayroll(): Response<PayrollResponse>
+    suspend fun postPayroll(
+        @Body payroll: PayrollResponse
+    ): Response<PayrollResponse>
 }
